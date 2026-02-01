@@ -1,5 +1,7 @@
 // Cell component for the notebook UI
 
+import { VOID, stringify } from '../interpreter/types.js';
+
 class Cell {
     constructor(notebook, id) {
         this.notebook = notebook;
@@ -304,3 +306,5 @@ class Cell {
         this.element.remove();
     }
 }
+
+export { Cell };

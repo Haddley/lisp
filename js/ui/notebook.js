@@ -1,5 +1,7 @@
 // Notebook controller for managing cells
 
+import { Cell } from './cell.js';
+
 class Notebook {
     constructor(container, interpreter) {
         this.container = container;
@@ -238,3 +240,5 @@ class Notebook {
         return false;
     }
 }
+
+export { Notebook };

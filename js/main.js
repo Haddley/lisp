@@ -1,5 +1,15 @@
 // Main application entry point
 
+import { VOID } from './interpreter/types.js';
+import { Lexer } from './interpreter/lexer.js';
+import { Parser } from './interpreter/parser.js';
+import { Evaluator } from './interpreter/evaluator.js';
+import { createGlobalEnvironment } from './stdlib/core.js';
+import { installListFunctions } from './stdlib/list.js';
+import { installStringFunctions } from './stdlib/string.js';
+import { installMathFunctions } from './stdlib/math.js';
+import { Notebook } from './ui/notebook.js';
+
 class LispInterpreter {
     constructor() {
         this.globalEnv = createGlobalEnvironment();
