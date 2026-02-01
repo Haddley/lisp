@@ -381,7 +381,8 @@ describe('Lexer', () => {
 
     describe('error handling', () => {
         it('throws on unexpected character', () => {
-            expectLexerError('@invalid', /[Uu]nexpected/);
+            // @ is valid in symbols, but { is not handled
+            expectLexerError('{invalid', /[Uu]nexpected/);
         });
 
         it('throws on unknown hash literal', () => {
