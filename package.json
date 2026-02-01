@@ -1,0 +1,16 @@
+{
+  "name": "lisp-notebook",
+  "version": "1.0.0",
+  "description": "A web-based Scheme-like LISP interpreter with a Jupyter-style notebook interface",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/**/*.test.js",
+    "test:unit": "node --test test/unit/**/*.test.js",
+    "test:stdlib": "node --test test/stdlib/**/*.test.js",
+    "test:integration": "node --test test/integration/**/*.test.js",
+    "test:coverage": "node --test --experimental-test-coverage test/**/*.test.js",
+    "test:watch": "node --test --watch test/**/*.test.js"
+  },
+  "keywords": ["lisp", "scheme", "interpreter", "notebook"],
+  "license": "MIT"
+}

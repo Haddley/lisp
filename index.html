@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISP Notebook</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header id="header">
+            <h1>LISP Notebook</h1>
+            <nav id="toolbar">
+                <button id="btn-run-all" title="Run All Cells (Ctrl+Shift+Enter)">
+                    <span class="icon">&#9654;&#9654;</span> Run All
+                </button>
+                <button id="btn-add-cell" title="Add Cell">
+                    <span class="icon">+</span> Add Cell
+                </button>
+                <button id="btn-clear-outputs" title="Clear All Outputs">
+                    <span class="icon">&#9003;</span> Clear
+                </button>
+                <button id="btn-reset" title="Reset Environment">
+                    <span class="icon">&#8635;</span> Reset
+                </button>
+                <div class="spacer"></div>
+                <button id="btn-help" title="Help">
+                    <span class="icon">?</span> Help
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main notebook area -->
+        <main id="notebook">
+            <div id="cells-container">
+                <!-- Cells will be inserted here -->
+            </div>
+        </main>
+
+        <!-- Status bar -->
+        <footer id="status-bar">
+            <span id="status-message">Ready</span>
+            <span id="status-env">Environment: 0 bindings</span>
+        </footer>
+    </div>
+
+    <!-- Help modal -->
+    <div id="help-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>LISP Notebook Help</h2>
+
+            <h3>Keyboard Shortcuts</h3>
+            <table>
+                <tr><td>Shift+Enter</td><td>Run current cell</td></tr>
+                <tr><td>Ctrl+Enter</td><td>Run cell and add new below</td></tr>
+                <tr><td>Ctrl+Shift+Enter</td><td>Run all cells</td></tr>
+                <tr><td>Ctrl+D</td><td>Delete current cell</td></tr>
+                <tr><td>Ctrl+Up</td><td>Move to previous cell</td></tr>
+                <tr><td>Ctrl+Down</td><td>Move to next cell</td></tr>
+                <tr><td>Tab</td><td>Insert 2 spaces</td></tr>
+            </table>
+
+            <h3>Language Features</h3>
+            <p>This is a Scheme-like LISP interpreter supporting:</p>
+            <ul>
+                <li><strong>Special forms:</strong> define, lambda, if, cond, let, let*, letrec, begin, quote, set!, and, or</li>
+                <li><strong>Data types:</strong> numbers, strings, booleans (#t/#f), symbols, lists</li>
+                <li><strong>70+ built-in functions</strong> for math, lists, strings, and more</li>
+            </ul>
+
+            <h3>Example Code</h3>
+            <pre><code>; Define a function
+(define (factorial n)
+  (if (<= n 1)
+      1
+      (* n (factorial (- n 1)))))
+
+(factorial 10)  ; => 3628800
+
+; Higher-order functions
+(map (lambda (x) (* x x)) '(1 2 3 4 5))
+; => (1 4 9 16 25)
+
+; Filter and reduce
+(filter even? (range 10))
+; => (0 2 4 6 8)
+
+(reduce + 0 '(1 2 3 4 5))
+; => 15
+
+; Let bindings
+(let ((x 10)
+      (y 20))
+  (+ x y))  ; => 30
+
+; Recursive named let
+(let loop ((n 5) (acc 1))
+  (if (<= n 1)
+      acc
+      (loop (- n 1) (* acc n))))
+; => 120</code></pre>
+
+            <button id="close-help">Close</button>
+        </div>
+    </div>
+
+    <!-- Scripts - loaded in order -->
+    <script src="js/interpreter/errors.js"></script>
+    <script src="js/interpreter/types.js"></script>
+    <script src="js/interpreter/lexer.js"></script>
+    <script src="js/interpreter/parser.js"></script>
+    <script src="js/interpreter/environment.js"></script>
+    <script src="js/interpreter/evaluator.js"></script>
+    <script src="js/stdlib/core.js"></script>
+    <script src="js/stdlib/list.js"></script>
+    <script src="js/stdlib/string.js"></script>
+    <script src="js/stdlib/math.js"></script>
+    <script src="js/ui/cell.js"></script>
+    <script src="js/ui/notebook.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
